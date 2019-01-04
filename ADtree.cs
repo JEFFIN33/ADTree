@@ -22,7 +22,7 @@ namespace ADTree
     private TreeView _tvAD;
     [AccessedThroughProperty("imglTree")]
     private ImageList _imglTree;
-    private string _ADPath;
+
     private string _Domain;
 
     public ADtree()
@@ -79,10 +79,7 @@ namespace ADTree
 
     internal virtual TreeView tvAD
     {
-      get
-      {
-        return _tvAD;
-      }
+      get => _tvAD;
       [MethodImpl(MethodImplOptions.Synchronized)] set
       {
         TreeViewEventHandler viewEventHandler1 = tvAD_AfterExpand;
@@ -105,64 +102,28 @@ namespace ADTree
 
     internal virtual ImageList imglTree
     {
-      get
-      {
-        return _imglTree;
-      }
-      [MethodImpl(MethodImplOptions.Synchronized)] set
-      {
-        _imglTree = value;
-      }
+      get => _imglTree;
+      [MethodImpl(MethodImplOptions.Synchronized)] set => _imglTree = value;
     }
 
-    public string ADPath
-    {
-      get
-      {
-        return _ADPath;
-      }
-      set
-      {
-        _ADPath = value;
-      }
-    }
+    public string ADPath { get; set; }
 
     public string Domain
     {
-      get
-      {
-        if (Operators.CompareString(_Domain, "", false) != 0)
-          return _Domain;
-        return Environment.UserDomainName.ToLower();
-      }
-      set
-      {
-        _Domain = value;
-      }
+      get => Operators.CompareString(_Domain, "", false) != 0 ? _Domain : Environment.UserDomainName.ToLower();
+      set => _Domain = value;
     }
 
     public override ContextMenu ContextMenu
     {
-      get
-      {
-        return tvAD.ContextMenu;
-      }
-      set
-      {
-        tvAD.ContextMenu = value;
-      }
+      get => tvAD.ContextMenu;
+      set => tvAD.ContextMenu = value;
     }
 
     public TreeNode SelectedNode
     {
-      get
-      {
-        return tvAD.SelectedNode;
-      }
-      set
-      {
-        tvAD.SelectedNode = value;
-      }
+      get => tvAD.SelectedNode;
+      set => tvAD.SelectedNode = value;
     }
 
     public override void Refresh()
@@ -179,8 +140,7 @@ namespace ADTree
     public void LoadAD()
     {
       tvAD.Nodes.Clear();
-      var treeNode = new TreeNode(Domain);
-      treeNode.Tag = "";
+      var treeNode = new TreeNode(Domain) {Tag = ""};
       tvAD.Nodes.Add(treeNode);
       AddTreeNodes(treeNode);
       tvAD.Nodes[0].Expand();
@@ -189,7 +149,7 @@ namespace ADTree
     public void AddTreeNodes(TreeNode tNode)
     {
       var adhelper = new ADhelper(Domain);
-      adhelper.GetChildEntries(Conversions.ToString(tNode.Tag));
+      adhelper.GetChildEntries(tNode.Tag.ToString());
       var enumerator1 = adhelper.Children.GetEnumerator();
       tvAD.BeginUpdate();
       while (enumerator1.MoveNext())
@@ -254,7 +214,7 @@ namespace ADTree
 
     private void tvAD_AfterSelect(object sender, TreeViewEventArgs e)
     {
-      _ADPath = Conversions.ToString(e.Node.Tag);
+      ADPath = e.Node.Tag.ToString();
       var pathChangedEvent = ADPathChanged;
       pathChangedEvent?.Invoke(this);
     }
