@@ -4,8 +4,6 @@
 // MVID: AD3D2372-2CAC-4221-B25D-8335DA876BAA
 // Assembly location: \Source\mRemoteNG\mRemoteV1\References\ADTree.dll
 
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,12 +12,10 @@ using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
 
-namespace ADTree.My.Resources
+namespace ADTree.Resources
 {
   [DebuggerNonUserCode]
   [CompilerGenerated]
-  [StandardModule]
-  [HideModuleName]
   [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
   internal sealed class Resources
   {
