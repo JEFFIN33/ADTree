@@ -51,17 +51,13 @@
     <Compile Include="ADtree.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="My\MyApplication.cs" />
-    <Compile Include="My\MyComputer.cs" />
-    <Compile Include="My\MyProject.cs" />
-    <Compile Include="My\MySettings.cs" />
-    <Compile Include="My\MySettingsProperty.cs" />
-    <Compile Include="My\Resources\Resources.cs" />
+    <Compile Include="Resources\Resources.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ADtree.resx" />
     <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
