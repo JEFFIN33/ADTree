@@ -4,7 +4,6 @@
 // MVID: AD3D2372-2CAC-4221-B25D-8335DA876BAA
 // Assembly location: \Source\mRemoteNG\mRemoteV1\References\ADTree.dll
 
-using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,7 +13,6 @@ using System.Windows.Forms;
 
 namespace ADTree
 {
-  [DesignerGenerated]
   public class ADtree : UserControl
   {
     private IContainer components;
@@ -110,7 +108,7 @@ namespace ADTree
 
     public string Domain
     {
-      get => Operators.CompareString(_Domain, "", false) != 0 ? _Domain : Environment.UserDomainName.ToLower();
+      get => string.IsNullOrEmpty(_Domain) == false ? _Domain : Environment.UserDomainName.ToLower();
       set => _Domain = value;
     }
 
@@ -160,9 +158,9 @@ namespace ADTree
         {
             Tag = RuntimeHelpers.GetObjectValue(enumerator1.Value)
         };
-        if (Operators.CompareString(enumerator1.Key.ToString().Substring(0, 2), "CN", false) != 0)
+        if (!enumerator1.Key.ToString().Substring(0, 2).Equals("CN"))
             flag1 = true;
-        if (Operators.CompareString(enumerator1.Key.ToString().Substring(0), "CN=Users", false) == 0)
+        if (enumerator1.Key.ToString().Substring(0).Equals("CN=Users"))
             flag1 = true;
         if (flag1)
         {
@@ -171,7 +169,7 @@ namespace ADTree
             {
                 foreach (TreeNode node2 in tNode.Nodes)
                 {
-                    if (Operators.CompareString(node2.Text, node1.Text, false) != 0) continue;
+                    if (!node2.Text.Equals(node1.Text)) continue;
                     flag2 = true;
                     break;
                 }
@@ -193,10 +191,9 @@ namespace ADTree
 
     public int GetImageIndex(string ObjType)
     {
-      var sLeft = ObjType;
-      if (Operators.CompareString(sLeft, "CN", false) == 0)
+      if (ObjType.Equals("CN"))
         return 2;
-      return Operators.CompareString(sLeft, "OU", false) == 0 ? 1 : 3;
+      return ObjType.Equals("OU") ? 1 : 3;
     }
 
     private void tvAD_AfterExpand(object sender, TreeViewEventArgs e)
