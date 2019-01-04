@@ -20,48 +20,36 @@ namespace ADTree
 
     public Hashtable Children
     {
-      get
-      {
-        return this._Children;
-      }
-      set
-      {
-        this._Children = value;
-      }
+      get => _Children;
+      set => _Children = value;
     }
 
     public string Domain
     {
-      get
-      {
-        return this._Domain;
-      }
-      set
-      {
-        this._Domain = value;
-      }
+      get => _Domain;
+      set => _Domain = value;
     }
 
     public ADhelper(string domain)
     {
-      this._Children = new Hashtable();
-      this._Domain = domain;
+      _Children = new Hashtable();
+      _Domain = domain;
     }
 
     public void GetChildEntries()
     {
-      this.GetChildEntries("");
+      GetChildEntries("");
     }
 
     public void GetChildEntries(string adPath)
     {
-      this.dEntry = adPath.Length <= 0 ? (this._Domain.Length <= 0 ? new DirectoryEntry() : new DirectoryEntry("LDAP://" + this._Domain)) : new DirectoryEntry(adPath);
+      dEntry = adPath.Length <= 0 ? (_Domain.Length <= 0 ? new DirectoryEntry() : new DirectoryEntry("LDAP://" + _Domain)) : new DirectoryEntry(adPath);
       try
       {
         try
         {
-          foreach (DirectoryEntry child in this.dEntry.Children)
-            this._Children.Add((object) child.Name, (object) child.Path);
+          foreach (DirectoryEntry child in dEntry.Children)
+            _Children.Add(child.Name, child.Path);
         }
         catch (Exception ex)
         {
@@ -70,16 +58,16 @@ namespace ADTree
       }
       catch (COMException ex)
       {
-        ProjectData.SetProjectError((Exception) ex);
+        ProjectData.SetProjectError(ex);
         COMException comException = ex;
         if (Operators.CompareString(comException.Message.ToLower(), "the server is not operational", false) == 0)
-          throw new Exception("Could not find AD Server", (Exception) comException);
+          throw new Exception("Could not find AD Server", comException);
         ProjectData.ClearProjectError();
       }
       catch (Exception ex)
       {
         ProjectData.SetProjectError(ex);
-        throw ex;
+        throw;
       }
     }
   }
