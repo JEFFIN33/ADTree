@@ -260,7 +260,7 @@ namespace ADTree
     private void tvAD_AfterSelect(object sender, TreeViewEventArgs e)
     {
       this._ADPath = Conversions.ToString(e.Node.Tag);
-      ADtree.ADPathChangedEventHandler pathChangedEvent = this.ADPathChangedEvt;
+      ADtree.ADPathChangedEventHandler pathChangedEvent = this.ADPathChanged;
       if (pathChangedEvent == null)
         return;
       pathChangedEvent((object) this);
@@ -268,7 +268,7 @@ namespace ADTree
 
     private void tvAD_MouseDown(object sender, MouseEventArgs e)
     {
-      ADtree.MouseDownEventHandler mouseDownEvent = this.MouseDownEvt;
+      ADtree.MouseDownEventHandler mouseDownEvent = this.MouseDown;
       if (mouseDownEvent == null)
         return;
       mouseDownEvent((object) this, e);
@@ -279,9 +279,9 @@ namespace ADTree
       this.LoadAD();
     }
 
-    public event ADtree.ADPathChangedEventHandler ADPathChangedEvt;
+    public event ADtree.ADPathChangedEventHandler ADPathChanged;
 
-    public event ADtree.MouseDownEventHandler MouseDownEvt;
+    public event ADtree.MouseDownEventHandler MouseDown;
 
     public delegate void ADPathChangedEventHandler(object sender);
 
