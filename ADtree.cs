@@ -6,7 +6,6 @@
 
 using Microsoft.VisualBasic.CompilerServices;
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -51,7 +50,7 @@ namespace ADTree
     private void InitializeComponent()
     {
       components = new Container();
-      ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof (ADtree));
+      var componentResourceManager = new ComponentResourceManager(typeof (ADtree));
       tvAD = new TreeView();
       imglTree = new ImageList(components);
       SuspendLayout();
@@ -61,12 +60,9 @@ namespace ADTree
       tvAD.ImageIndex = 0;
       tvAD.ImageList = imglTree;
       tvAD.Location = new Point(0, 0);
-      tvAD.Name = "tvAD";
+      tvAD.Name = $"tvAD";
       tvAD.SelectedImageIndex = 0;
-      TreeView tvAd = tvAD;
-      Size size1 = new Size(254, 254);
-      Size size2 = size1;
-      tvAd.Size = size2;
+      tvAD.Size = new Size(254, 254);
       tvAD.TabIndex = 0;
       imglTree.ImageStream = (ImageListStreamer) componentResourceManager.GetObject("imglTree.ImageStream");
       imglTree.TransparentColor = Color.Transparent;
@@ -78,8 +74,6 @@ namespace ADTree
       AutoScaleMode = AutoScaleMode.Font;
       Controls.Add(tvAD);
       Name = nameof (ADtree);
-      size1 = new Size(254, 254);
-      Size = size1;
       ResumeLayout(false);
     }
 
@@ -185,7 +179,7 @@ namespace ADTree
     public void LoadAD()
     {
       tvAD.Nodes.Clear();
-      TreeNode treeNode = new TreeNode(Domain);
+      var treeNode = new TreeNode(Domain);
       treeNode.Tag = "";
       tvAD.Nodes.Add(treeNode);
       AddTreeNodes(treeNode);
@@ -194,15 +188,15 @@ namespace ADTree
 
     public void AddTreeNodes(TreeNode tNode)
     {
-      ADhelper adhelper = new ADhelper(Domain);
+      var adhelper = new ADhelper(Domain);
       adhelper.GetChildEntries(Conversions.ToString(tNode.Tag));
-      IDictionaryEnumerator enumerator1 = adhelper.Children.GetEnumerator();
+      var enumerator1 = adhelper.Children.GetEnumerator();
       tvAD.BeginUpdate();
       while (enumerator1.MoveNext())
       {
-        bool flag1 = false;
+        var flag1 = false;
         if (enumerator1.Key == null) continue;
-        TreeNode node1 = new TreeNode(enumerator1.Key.ToString().Substring(3))
+        var node1 = new TreeNode(enumerator1.Key.ToString().Substring(3))
         {
             Tag = RuntimeHelpers.GetObjectValue(enumerator1.Value)
         };
@@ -212,7 +206,7 @@ namespace ADTree
             flag1 = true;
         if (flag1)
         {
-            bool flag2 = false;
+            var flag2 = false;
             try
             {
                 foreach (TreeNode node2 in tNode.Nodes)
@@ -230,7 +224,7 @@ namespace ADTree
             if (!flag2)
                 tNode.Nodes.Add(node1);
         }
-        int imageIndex = GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
+        var imageIndex = GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
         node1.ImageIndex = imageIndex;
         node1.SelectedImageIndex = imageIndex;
       }
@@ -239,7 +233,7 @@ namespace ADTree
 
     public int GetImageIndex(string ObjType)
     {
-      string sLeft = ObjType;
+      var sLeft = ObjType;
       if (Operators.CompareString(sLeft, "CN", false) == 0)
         return 2;
       return Operators.CompareString(sLeft, "OU", false) == 0 ? 1 : 3;
@@ -261,13 +255,13 @@ namespace ADTree
     private void tvAD_AfterSelect(object sender, TreeViewEventArgs e)
     {
       _ADPath = Conversions.ToString(e.Node.Tag);
-      ADPathChangedEventHandler pathChangedEvent = ADPathChanged;
+      var pathChangedEvent = ADPathChanged;
       pathChangedEvent?.Invoke(this);
     }
 
     private void tvAD_MouseDown(object sender, MouseEventArgs e)
     {
-      MouseDownEventHandler mouseDownEvent = MouseDown;
+      var mouseDownEvent = MouseDown;
       mouseDownEvent?.Invoke(this, e);
     }
 
