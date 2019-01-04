@@ -28,8 +28,8 @@ namespace ADTree
 
     public ADtree()
     {
-      this.Load += new EventHandler(this.ADtree_Load);
-      this.InitializeComponent();
+      Load += ADtree_Load;
+      InitializeComponent();
     }
 
     [DebuggerNonUserCode]
@@ -37,9 +37,9 @@ namespace ADTree
     {
       try
       {
-        if (!disposing || this.components == null)
+        if (!disposing || components == null)
           return;
-        this.components.Dispose();
+        components.Dispose();
       }
       finally
       {
@@ -50,62 +50,62 @@ namespace ADTree
     [DebuggerStepThrough]
     private void InitializeComponent()
     {
-      this.components = (IContainer) new System.ComponentModel.Container();
+      components = new Container();
       ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof (ADtree));
-      this.tvAD = new TreeView();
-      this.imglTree = new ImageList(this.components);
-      this.SuspendLayout();
-      this.tvAD.BorderStyle = BorderStyle.None;
-      this.tvAD.Dock = DockStyle.Fill;
-      this.tvAD.HideSelection = false;
-      this.tvAD.ImageIndex = 0;
-      this.tvAD.ImageList = this.imglTree;
-      this.tvAD.Location = new Point(0, 0);
-      this.tvAD.Name = "tvAD";
-      this.tvAD.SelectedImageIndex = 0;
-      TreeView tvAd = this.tvAD;
+      tvAD = new TreeView();
+      imglTree = new ImageList(components);
+      SuspendLayout();
+      tvAD.BorderStyle = BorderStyle.None;
+      tvAD.Dock = DockStyle.Fill;
+      tvAD.HideSelection = false;
+      tvAD.ImageIndex = 0;
+      tvAD.ImageList = imglTree;
+      tvAD.Location = new Point(0, 0);
+      tvAD.Name = "tvAD";
+      tvAD.SelectedImageIndex = 0;
+      TreeView tvAd = tvAD;
       Size size1 = new Size(254, 254);
       Size size2 = size1;
       tvAd.Size = size2;
-      this.tvAD.TabIndex = 0;
-      this.imglTree.ImageStream = (ImageListStreamer) componentResourceManager.GetObject("imglTree.ImageStream");
-      this.imglTree.TransparentColor = Color.Transparent;
-      this.imglTree.Images.SetKeyName(0, "Root.png");
-      this.imglTree.Images.SetKeyName(1, "OU.png");
-      this.imglTree.Images.SetKeyName(2, "Folder.png");
-      this.imglTree.Images.SetKeyName(3, "Question.png");
-      this.AutoScaleDimensions = new SizeF(6f, 13f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.tvAD);
-      this.Name = nameof (ADtree);
+      tvAD.TabIndex = 0;
+      imglTree.ImageStream = (ImageListStreamer) componentResourceManager.GetObject("imglTree.ImageStream");
+      imglTree.TransparentColor = Color.Transparent;
+      imglTree.Images.SetKeyName(0, "Root.png");
+      imglTree.Images.SetKeyName(1, "OU.png");
+      imglTree.Images.SetKeyName(2, "Folder.png");
+      imglTree.Images.SetKeyName(3, "Question.png");
+      AutoScaleDimensions = new SizeF(6f, 13f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(tvAD);
+      Name = nameof (ADtree);
       size1 = new Size(254, 254);
-      this.Size = size1;
-      this.ResumeLayout(false);
+      Size = size1;
+      ResumeLayout(false);
     }
 
     internal virtual TreeView tvAD
     {
       get
       {
-        return this._tvAD;
+        return _tvAD;
       }
       [MethodImpl(MethodImplOptions.Synchronized)] set
       {
-        TreeViewEventHandler viewEventHandler1 = new TreeViewEventHandler(this.tvAD_AfterExpand);
-        MouseEventHandler mouseEventHandler = new MouseEventHandler(this.tvAD_MouseDown);
-        TreeViewEventHandler viewEventHandler2 = new TreeViewEventHandler(this.tvAD_AfterSelect);
-        if (this._tvAD != null)
+        TreeViewEventHandler viewEventHandler1 = tvAD_AfterExpand;
+        MouseEventHandler mouseEventHandler = tvAD_MouseDown;
+        TreeViewEventHandler viewEventHandler2 = tvAD_AfterSelect;
+        if (_tvAD != null)
         {
-          this._tvAD.AfterExpand -= viewEventHandler1;
-          this._tvAD.MouseDown -= mouseEventHandler;
-          this._tvAD.AfterSelect -= viewEventHandler2;
+          _tvAD.AfterExpand -= viewEventHandler1;
+          _tvAD.MouseDown -= mouseEventHandler;
+          _tvAD.AfterSelect -= viewEventHandler2;
         }
-        this._tvAD = value;
-        if (this._tvAD == null)
+        _tvAD = value;
+        if (_tvAD == null)
           return;
-        this._tvAD.AfterExpand += viewEventHandler1;
-        this._tvAD.MouseDown += mouseEventHandler;
-        this._tvAD.AfterSelect += viewEventHandler2;
+        _tvAD.AfterExpand += viewEventHandler1;
+        _tvAD.MouseDown += mouseEventHandler;
+        _tvAD.AfterSelect += viewEventHandler2;
       }
     }
 
@@ -113,11 +113,11 @@ namespace ADTree
     {
       get
       {
-        return this._imglTree;
+        return _imglTree;
       }
       [MethodImpl(MethodImplOptions.Synchronized)] set
       {
-        this._imglTree = value;
+        _imglTree = value;
       }
     }
 
@@ -125,11 +125,11 @@ namespace ADTree
     {
       get
       {
-        return this._ADPath;
+        return _ADPath;
       }
       set
       {
-        this._ADPath = value;
+        _ADPath = value;
       }
     }
 
@@ -137,13 +137,13 @@ namespace ADTree
     {
       get
       {
-        if (Operators.CompareString(this._Domain, "", false) != 0)
-          return this._Domain;
+        if (Operators.CompareString(_Domain, "", false) != 0)
+          return _Domain;
         return Environment.UserDomainName.ToLower();
       }
       set
       {
-        this._Domain = value;
+        _Domain = value;
       }
     }
 
@@ -151,11 +151,11 @@ namespace ADTree
     {
       get
       {
-        return this.tvAD.ContextMenu;
+        return tvAD.ContextMenu;
       }
       set
       {
-        this.tvAD.ContextMenu = value;
+        tvAD.ContextMenu = value;
       }
     }
 
@@ -163,85 +163,86 @@ namespace ADTree
     {
       get
       {
-        return this.tvAD.SelectedNode;
+        return tvAD.SelectedNode;
       }
       set
       {
-        this.tvAD.SelectedNode = value;
+        tvAD.SelectedNode = value;
       }
     }
 
     public override void Refresh()
     {
       base.Refresh();
-      this.LoadAD();
+      LoadAD();
     }
 
     public void SelectNodeAt(Point Pt)
     {
-      this.tvAD.SelectedNode = this.tvAD.GetNodeAt(Pt);
+      tvAD.SelectedNode = tvAD.GetNodeAt(Pt);
     }
 
     public void LoadAD()
     {
-      this.tvAD.Nodes.Clear();
-      TreeNode treeNode = new TreeNode(this.Domain);
-      treeNode.Tag = (object) "";
-      this.tvAD.Nodes.Add(treeNode);
-      this.AddTreeNodes(treeNode);
-      this.tvAD.Nodes[0].Expand();
+      tvAD.Nodes.Clear();
+      TreeNode treeNode = new TreeNode(Domain);
+      treeNode.Tag = "";
+      tvAD.Nodes.Add(treeNode);
+      AddTreeNodes(treeNode);
+      tvAD.Nodes[0].Expand();
     }
 
     public void AddTreeNodes(TreeNode tNode)
     {
-      ADhelper adhelper = new ADhelper(this.Domain);
+      ADhelper adhelper = new ADhelper(Domain);
       adhelper.GetChildEntries(Conversions.ToString(tNode.Tag));
       IDictionaryEnumerator enumerator1 = adhelper.Children.GetEnumerator();
-      this.tvAD.BeginUpdate();
+      tvAD.BeginUpdate();
       while (enumerator1.MoveNext())
       {
         bool flag1 = false;
-        TreeNode node1 = new TreeNode(enumerator1.Key.ToString().Substring(3));
-        node1.Tag = RuntimeHelpers.GetObjectValue(enumerator1.Value);
+        if (enumerator1.Key == null) continue;
+        TreeNode node1 = new TreeNode(enumerator1.Key.ToString().Substring(3))
+        {
+            Tag = RuntimeHelpers.GetObjectValue(enumerator1.Value)
+        };
         if (Operators.CompareString(enumerator1.Key.ToString().Substring(0, 2), "CN", false) != 0)
-          flag1 = true;
+            flag1 = true;
         if (Operators.CompareString(enumerator1.Key.ToString().Substring(0), "CN=Users", false) == 0)
-          flag1 = true;
+            flag1 = true;
         if (flag1)
         {
-          bool flag2 = false;
-          try
-          {
-              foreach (TreeNode node2 in tNode.Nodes)
-              {
-                  if (Operators.CompareString(node2.Text, node1.Text, false) == 0)
-                  {
-                      flag2 = true;
-                      break;
-                  }
-              }
-          }
-          catch (Exception ex)
-          {
-              Console.WriteLine(ex.StackTrace);
-          }
+            bool flag2 = false;
+            try
+            {
+                foreach (TreeNode node2 in tNode.Nodes)
+                {
+                    if (Operators.CompareString(node2.Text, node1.Text, false) != 0) continue;
+                    flag2 = true;
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
 
-          if (!flag2)
-            tNode.Nodes.Add(node1);
+            if (!flag2)
+                tNode.Nodes.Add(node1);
         }
-        int imageIndex = this.GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
+        int imageIndex = GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
         node1.ImageIndex = imageIndex;
         node1.SelectedImageIndex = imageIndex;
       }
-      this.tvAD.EndUpdate();
+      tvAD.EndUpdate();
     }
 
     public int GetImageIndex(string ObjType)
     {
-      string Left = ObjType;
-      if (Operators.CompareString(Left, "CN", false) == 0)
+      string sLeft = ObjType;
+      if (Operators.CompareString(sLeft, "CN", false) == 0)
         return 2;
-      return Operators.CompareString(Left, "OU", false) == 0 ? 1 : 3;
+      return Operators.CompareString(sLeft, "OU", false) == 0 ? 1 : 3;
     }
 
     private void tvAD_AfterExpand(object sender, TreeViewEventArgs e)
@@ -249,7 +250,7 @@ namespace ADTree
       try
       {
         foreach (TreeNode node in e.Node.Nodes)
-          this.AddTreeNodes(node);
+          AddTreeNodes(node);
       }
       catch(Exception ex)
       {
@@ -259,29 +260,25 @@ namespace ADTree
 
     private void tvAD_AfterSelect(object sender, TreeViewEventArgs e)
     {
-      this._ADPath = Conversions.ToString(e.Node.Tag);
-      ADtree.ADPathChangedEventHandler pathChangedEvent = this.ADPathChanged;
-      if (pathChangedEvent == null)
-        return;
-      pathChangedEvent((object) this);
+      _ADPath = Conversions.ToString(e.Node.Tag);
+      ADPathChangedEventHandler pathChangedEvent = ADPathChanged;
+      pathChangedEvent?.Invoke(this);
     }
 
     private void tvAD_MouseDown(object sender, MouseEventArgs e)
     {
-      ADtree.MouseDownEventHandler mouseDownEvent = this.MouseDown;
-      if (mouseDownEvent == null)
-        return;
-      mouseDownEvent((object) this, e);
+      MouseDownEventHandler mouseDownEvent = MouseDown;
+      mouseDownEvent?.Invoke(this, e);
     }
 
     private void ADtree_Load(object sender, EventArgs e)
     {
-      this.LoadAD();
+      LoadAD();
     }
 
-    public event ADtree.ADPathChangedEventHandler ADPathChanged;
+    public event ADPathChangedEventHandler ADPathChanged;
 
-    public event ADtree.MouseDownEventHandler MouseDown;
+    public event MouseDownEventHandler MouseDown;
 
     public delegate void ADPathChangedEventHandler(object sender);
 
