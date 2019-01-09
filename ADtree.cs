@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ADTree
 {
-  public class ADtree : UserControl
+  public sealed class ADtree : UserControl
   {
     private IContainer components;
     [AccessedThroughProperty("tvAD")]
@@ -25,7 +25,7 @@ namespace ADTree
 
     public ADtree()
     {
-      Load += ADtree_Load;
+      //Load += ADtree_Load;
       InitializeComponent();
     }
 
@@ -75,7 +75,7 @@ namespace ADTree
       ResumeLayout(false);
     }
 
-    internal virtual TreeView tvAD
+    private TreeView tvAD
     {
       get => _tvAD;
       [MethodImpl(MethodImplOptions.Synchronized)] set
@@ -98,7 +98,7 @@ namespace ADTree
       }
     }
 
-    internal virtual ImageList imglTree
+    internal ImageList imglTree
     {
       get => _imglTree;
       [MethodImpl(MethodImplOptions.Synchronized)] set => _imglTree = value;
@@ -108,7 +108,7 @@ namespace ADTree
 
     public string Domain
     {
-      get => string.IsNullOrEmpty(_Domain) == false ? _Domain : Environment.UserDomainName.ToLower();
+      get => string.IsNullOrEmpty(_Domain) == false ? _Domain : Environment.UserDomainName;
       set => _Domain = value;
     }
 

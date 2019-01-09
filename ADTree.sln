@@ -4,6 +4,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADTree", "ADTree.csproj", "{EAE4E722-5F97-4454-A40C-CD2D88F87232}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADTree_TestForm", "ADTree_TestForm\ADTree_TestForm.csproj", "{05B62A4A-DF3A-4BC4-B408-96400F3E95C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{EAE4E722-5F97-4454-A40C-CD2D88F87232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAE4E722-5F97-4454-A40C-CD2D88F87232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAE4E722-5F97-4454-A40C-CD2D88F87232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B62A4A-DF3A-4BC4-B408-96400F3E95C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B62A4A-DF3A-4BC4-B408-96400F3E95C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B62A4A-DF3A-4BC4-B408-96400F3E95C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B62A4A-DF3A-4BC4-B408-96400F3E95C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
