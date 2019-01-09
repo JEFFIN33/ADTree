@@ -81,21 +81,16 @@ namespace ADTree
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                TreeViewEventHandler viewEventHandler1 = tvAD_AfterExpand;
-                MouseEventHandler mouseEventHandler = tvAD_MouseDown;
-                TreeViewEventHandler viewEventHandler2 = tvAD_AfterSelect;
                 if (_tvAD != null)
                 {
-                    _tvAD.AfterExpand -= viewEventHandler1;
-                    _tvAD.MouseDown -= mouseEventHandler;
-                    _tvAD.AfterSelect -= viewEventHandler2;
+                    _tvAD.AfterExpand -= tvAD_AfterExpand;
+                    _tvAD.AfterSelect -= tvAD_AfterSelect;
                 }
                 _tvAD = value;
                 if (_tvAD == null)
                     return;
-                _tvAD.AfterExpand += viewEventHandler1;
-                _tvAD.MouseDown += mouseEventHandler;
-                _tvAD.AfterSelect += viewEventHandler2;
+                _tvAD.AfterExpand += tvAD_AfterExpand;
+                _tvAD.AfterSelect += tvAD_AfterSelect;
             }
         }
 
@@ -220,12 +215,6 @@ namespace ADTree
             pathChangedEvent?.Invoke(this);
         }
 
-        private void tvAD_MouseDown(object sender, MouseEventArgs e)
-        {
-            var mouseDownEvent = MouseDown;
-            mouseDownEvent?.Invoke(this, e);
-        }
-
         private void ADtree_Load(object sender, EventArgs e)
         {
             LoadAD();
@@ -233,10 +222,6 @@ namespace ADTree
 
         public event ADPathChangedEventHandler ADPathChanged;
 
-        public event MouseDownEventHandler MouseDown;
-
         public delegate void ADPathChangedEventHandler(object sender);
-
-        public delegate void MouseDownEventHandler(object sender, MouseEventArgs e);
     }
 }
