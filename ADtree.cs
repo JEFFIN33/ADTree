@@ -132,12 +132,14 @@ namespace ADTree
             LoadAD();
         }
 
+#if false
         public void SelectNodeAt(Point Pt)
         {
             tvAD.SelectedNode = tvAD.GetNodeAt(Pt);
         }
+#endif
 
-        public void LoadAD()
+        private void LoadAD()
         {
             tvAD.Nodes.Clear();
             var treeNode = new TreeNode(Domain) { Tag = "" };
@@ -146,7 +148,7 @@ namespace ADTree
             tvAD.Nodes[0].Expand();
         }
 
-        public void AddTreeNodes(TreeNode tNode)
+        private void AddTreeNodes(TreeNode tNode)
         {
             var adhelper = new ADhelper(Domain);
             adhelper.GetChildEntries(tNode.Tag.ToString());
@@ -191,7 +193,7 @@ namespace ADTree
             tvAD.EndUpdate();
         }
 
-        public int GetImageIndex(string ObjType)
+        private static int GetImageIndex(string ObjType)
         {
             if (ObjType.Equals("CN"))
                 return 2;
