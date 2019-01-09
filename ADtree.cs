@@ -68,8 +68,8 @@ namespace ADTree
             imglTree.Images.SetKeyName(1, "OU.png");
             imglTree.Images.SetKeyName(2, "Folder.png");
             imglTree.Images.SetKeyName(3, "Question.png");
-            AutoScaleDimensions = new SizeF(6f, 13f);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96f, 96f);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tvAD);
             Name = nameof(ADtree);
             ResumeLayout(false);
