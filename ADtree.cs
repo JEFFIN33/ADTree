@@ -25,7 +25,7 @@ namespace ADTree
 
         public ADtree()
         {
-            //Load += ADtree_Load;
+            Load += ADtree_Load;
             InitializeComponent();
         }
 
