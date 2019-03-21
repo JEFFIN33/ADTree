@@ -146,20 +146,21 @@ namespace ADTree
         {
             var adhelper = new ADhelper(Domain);
             adhelper.GetChildEntries(tNode.Tag.ToString());
-            var enumerator1 = adhelper.Children.GetEnumerator();
+            var enumerator = adhelper.Children.GetEnumerator();
             TvAd.BeginUpdate();
-            while (enumerator1.MoveNext())
+            while (enumerator.MoveNext())
             {
                 var flag1 = false;
-                if (enumerator1.Key == null) continue;
-                var node1 = new TreeNode(enumerator1.Key.ToString().Substring(3))
+                if (enumerator.Key == null) continue;
+                var node1 = new TreeNode(enumerator.Key.ToString().Substring(3))
                 {
-                    Tag = RuntimeHelpers.GetObjectValue(enumerator1.Value)
+                    Tag = RuntimeHelpers.GetObjectValue(enumerator.Value)
                 };
-                if (!enumerator1.Key.ToString().Substring(0, 2).Equals("CN"))
+                if (!enumerator.Key.ToString().Substring(0, 2).Equals("CN") ||
+                    (enumerator.Key.ToString().Equals("CN=Computers")) ||
+                    (enumerator.Key.ToString().Equals("CN=Users")))
                     flag1 = true;
-                if (enumerator1.Key.ToString().Substring(0).Equals("CN=Users"))
-                    flag1 = true;
+
                 if (flag1)
                 {
                     var flag2 = false;
@@ -181,7 +182,7 @@ namespace ADTree
                         tNode.Nodes.Add(node1);
                 }
 
-                var imageIndex = GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
+                var imageIndex = GetImageIndex(enumerator.Key.ToString().Substring(0, 2));
                 node1.ImageIndex = imageIndex;
                 node1.SelectedImageIndex = imageIndex;
             }
