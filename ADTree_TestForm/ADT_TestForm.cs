@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 
-//using WeifenLuo.WinFormsUI.Docking;
-
 namespace ADTree_TestForm
 {
-    public partial class ADT_TestForm
+    public partial class AdtTestForm
     {
         private string _currentDomain;
-        //private DockContent DockPnl;
 
-        public ADT_TestForm()
+        public AdtTestForm()
         {
             InitializeComponent();
-            //FontOverrider.FontOverride(this);
-            //DockPnl = new DockContent();
-            //_currentDomain = Environment.UserDomainName;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -39,7 +33,7 @@ namespace ADTree_TestForm
             ChangeDomain();
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private void BtnImport_Click(object sender, EventArgs e)
         {
         }
 
@@ -51,14 +45,14 @@ namespace ADTree_TestForm
 		}
         */
 
-        private void txtDomain_KeyDown(object sender, KeyEventArgs e)
+        private void TxtDomain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
             ChangeDomain();
             e.SuppressKeyPress = true;
         }
 
-        private void btnChangeDomain_Click(object sender, EventArgs e)
+        private void BtnChangeDomain_Click(object sender, EventArgs e)
         {
             ChangeDomain();
         }
@@ -88,7 +82,7 @@ namespace ADTree_TestForm
 
         private void EnableDisableImportButton()
         {
-            btnImport.Enabled = !string.IsNullOrEmpty(ActiveDirectoryTree.ADPath);
+            btnImport.Enabled = !string.IsNullOrEmpty(ActiveDirectoryTree.AdPath);
         }
 
         #endregion

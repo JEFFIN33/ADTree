@@ -13,7 +13,7 @@ namespace ADTree
 {
     public class ADhelper
     {
-        private DirectoryEntry dEntry;
+        private DirectoryEntry _dEntry;
 
         public ADhelper(string domain)
         {
@@ -21,18 +21,18 @@ namespace ADTree
             Domain = domain;
         }
 
-        public Hashtable Children { get; set; }
+        public Hashtable Children { get; }
 
-        public string Domain { get; set; }
+        private string Domain { get; }
 
         public void GetChildEntries(string adPath = "")
         {
-            dEntry = adPath.Length <= 0
+            _dEntry = adPath.Length <= 0
                 ? Domain.Length <= 0 ? new DirectoryEntry() : new DirectoryEntry("LDAP://" + Domain)
                 : new DirectoryEntry(adPath);
             try
             {
-                foreach (DirectoryEntry child in dEntry.Children)
+                foreach (DirectoryEntry child in _dEntry.Children)
                     Children.Add(child.Name, child.Path);
             }
             catch (COMException ex)

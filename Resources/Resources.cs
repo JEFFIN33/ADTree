@@ -19,11 +19,11 @@ namespace ADTree.Resources
     [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     internal sealed class Resources
     {
-        private static ResourceManager resourceMan;
+        private static ResourceManager _resourceMan;
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         internal static ResourceManager ResourceManager =>
-            resourceMan ?? (resourceMan = new ResourceManager("ADTree.Resources", typeof(Resources).Assembly));
+            _resourceMan ?? (_resourceMan = new ResourceManager("ADTree.Resources", typeof(Resources).Assembly));
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         internal static CultureInfo Culture { get; set; }
@@ -31,8 +31,8 @@ namespace ADTree.Resources
         internal static Bitmap Folder =>
             (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Folder), Culture));
 
-        internal static Bitmap OU =>
-            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(OU), Culture));
+        internal static Bitmap Ou =>
+            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Ou), Culture));
 
         internal static Bitmap Question =>
             (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Question), Culture));

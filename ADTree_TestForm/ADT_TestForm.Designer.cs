@@ -3,7 +3,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace ADTree_TestForm
 {
-    public partial class ADT_TestForm : DockContent
+    public partial class AdtTestForm : DockContent
     {
         #region  Windows Form Designer generated code
         private void InitializeComponent()
@@ -26,7 +26,7 @@ namespace ADTree_TestForm
             this.btnImport.TabIndex = 4;
             this.btnImport.Text = "&Import";
             this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            this.btnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
             // txtDomain
             // 
@@ -37,7 +37,7 @@ namespace ADTree_TestForm
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(406, 22);
             this.txtDomain.TabIndex = 1;
-            this.txtDomain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDomain_KeyDown);
+            this.txtDomain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtDomain_KeyDown);
             // 
             // lblDomain
             // 
@@ -57,11 +57,11 @@ namespace ADTree_TestForm
             this.btnChangeDomain.TabIndex = 2;
             this.btnChangeDomain.Text = "Change";
             this.btnChangeDomain.UseVisualStyleBackColor = true;
-            this.btnChangeDomain.Click += new System.EventHandler(this.btnChangeDomain_Click);
+            this.btnChangeDomain.Click += new System.EventHandler(this.BtnChangeDomain_Click);
             // 
             // ActiveDirectoryTree
             // 
-            this.ActiveDirectoryTree.ADPath = null;
+            this.ActiveDirectoryTree.AdPath = null;
             this.ActiveDirectoryTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -73,7 +73,7 @@ namespace ADTree_TestForm
             this.ActiveDirectoryTree.SelectedNode = null;
             this.ActiveDirectoryTree.Size = new System.Drawing.Size(510, 285);
             this.ActiveDirectoryTree.TabIndex = 3;
-            this.ActiveDirectoryTree.ADPathChanged += new ADTree.ADtree.ADPathChangedEventHandler(this.ActiveDirectoryTree_ADPathChanged);
+            this.ActiveDirectoryTree.AdPathChanged += new ADTree.ADtree.AdPathChangedEventHandler(this.ActiveDirectoryTree_ADPathChanged);
             // 
             // btnClose
             // 
@@ -84,7 +84,7 @@ namespace ADTree_TestForm
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // chkSubOU
             // 

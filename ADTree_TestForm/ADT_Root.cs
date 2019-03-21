@@ -10,7 +10,7 @@ namespace ADTree_TestForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ADT_TestForm());
+            Application.Run(new AdtTestForm());
         }
     }
 }
