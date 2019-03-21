@@ -14,25 +14,30 @@ using System.Runtime.CompilerServices;
 
 namespace ADTree.Resources
 {
-  [DebuggerNonUserCode]
-  [CompilerGenerated]
-  [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
-  internal sealed class Resources
-  {
-    private static ResourceManager resourceMan;
+    [DebuggerNonUserCode]
+    [CompilerGenerated]
+    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
+    internal sealed class Resources
+    {
+        private static ResourceManager resourceMan;
 
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    internal static ResourceManager ResourceManager => resourceMan ?? (resourceMan = new ResourceManager("ADTree.Resources", typeof(Resources).Assembly));
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        internal static ResourceManager ResourceManager =>
+            resourceMan ?? (resourceMan = new ResourceManager("ADTree.Resources", typeof(Resources).Assembly));
 
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    internal static CultureInfo Culture { get; set; }
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        internal static CultureInfo Culture { get; set; }
 
-    internal static Bitmap Folder => (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof (Folder), Culture));
+        internal static Bitmap Folder =>
+            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Folder), Culture));
 
-    internal static Bitmap OU => (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof (OU), Culture));
+        internal static Bitmap OU =>
+            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(OU), Culture));
 
-    internal static Bitmap Question => (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof (Question), Culture));
+        internal static Bitmap Question =>
+            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Question), Culture));
 
-    internal static Bitmap Root => (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof (Root), Culture));
-  }
+        internal static Bitmap Root =>
+            (Bitmap) RuntimeHelpers.GetObjectValue(ResourceManager.GetObject(nameof(Root), Culture));
+    }
 }

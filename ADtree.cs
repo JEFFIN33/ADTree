@@ -16,10 +16,8 @@ namespace ADTree
     public sealed class ADtree : UserControl
     {
         private IContainer components;
-        [AccessedThroughProperty("tvAD")]
-        private TreeView _tvAD;
-        [AccessedThroughProperty("imglTree")]
-        private ImageList _imglTree;
+        [AccessedThroughProperty("tvAD")] private TreeView _tvAD;
+        [AccessedThroughProperty("imglTree")] private ImageList _imglTree;
 
         private string _Domain;
 
@@ -58,11 +56,11 @@ namespace ADTree
             tvAD.ImageIndex = 0;
             tvAD.ImageList = imglTree;
             tvAD.Location = new Point(0, 0);
-            tvAD.Name = $"tvAD";
+            tvAD.Name = "tvAD";
             tvAD.SelectedImageIndex = 0;
             tvAD.Size = new Size(254, 254);
             tvAD.TabIndex = 0;
-            imglTree.ImageStream = (ImageListStreamer)componentResourceManager.GetObject("imglTree.ImageStream");
+            imglTree.ImageStream = (ImageListStreamer) componentResourceManager.GetObject("imglTree.ImageStream");
             imglTree.TransparentColor = Color.Transparent;
             imglTree.Images.SetKeyName(0, "Root.png");
             imglTree.Images.SetKeyName(1, "OU.png");
@@ -86,6 +84,7 @@ namespace ADTree
                     _tvAD.AfterExpand -= tvAD_AfterExpand;
                     _tvAD.AfterSelect -= tvAD_AfterSelect;
                 }
+
                 _tvAD = value;
                 if (_tvAD == null)
                     return;
@@ -137,7 +136,7 @@ namespace ADTree
         private void LoadAD()
         {
             tvAD.Nodes.Clear();
-            var treeNode = new TreeNode(Domain) { Tag = "" };
+            var treeNode = new TreeNode(Domain) {Tag = ""};
             tvAD.Nodes.Add(treeNode);
             AddTreeNodes(treeNode);
             tvAD.Nodes[0].Expand();
@@ -181,10 +180,12 @@ namespace ADTree
                     if (!flag2)
                         tNode.Nodes.Add(node1);
                 }
+
                 var imageIndex = GetImageIndex(enumerator1.Key.ToString().Substring(0, 2));
                 node1.ImageIndex = imageIndex;
                 node1.SelectedImageIndex = imageIndex;
             }
+
             tvAD.EndUpdate();
         }
 

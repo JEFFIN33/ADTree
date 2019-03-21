@@ -15,19 +15,21 @@ namespace ADTree
     {
         private DirectoryEntry dEntry;
 
-        public Hashtable Children { get; set; }
-
-        public string Domain { get; set; }
-
         public ADhelper(string domain)
         {
             Children = new Hashtable();
             Domain = domain;
         }
 
+        public Hashtable Children { get; set; }
+
+        public string Domain { get; set; }
+
         public void GetChildEntries(string adPath = "")
         {
-            dEntry = adPath.Length <= 0 ? Domain.Length <= 0 ? new DirectoryEntry() : new DirectoryEntry("LDAP://" + Domain) : new DirectoryEntry(adPath);
+            dEntry = adPath.Length <= 0
+                ? Domain.Length <= 0 ? new DirectoryEntry() : new DirectoryEntry("LDAP://" + Domain)
+                : new DirectoryEntry(adPath);
             try
             {
                 foreach (DirectoryEntry child in dEntry.Children)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+
 //using WeifenLuo.WinFormsUI.Docking;
 
 namespace ADTree_TestForm
@@ -17,8 +18,12 @@ namespace ADTree_TestForm
             //_currentDomain = Environment.UserDomainName;
         }
 
-        #region Private Methods
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        #region Private Methods
 
         #region Event Handlers
 
@@ -87,10 +92,5 @@ namespace ADTree_TestForm
         }
 
         #endregion
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }
