@@ -1,10 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ADTree.ADtree
-// Assembly: ADTree, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: AD3D2372-2CAC-4221-B25D-8335DA876BAA
-// Assembly location: \Source\mRemoteNG\mRemoteV1\References\ADTree.dll
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -56,6 +50,7 @@ namespace ADTree
             TvAd.ImageIndex = 0;
             TvAd.ImageList = ImglTree;
             TvAd.Location = new Point(0, 0);
+            // ReSharper disable once NotResolvedInText
             TvAd.Name = "tvAD";
             TvAd.SelectedImageIndex = 0;
             TvAd.Size = new Size(254, 254);
@@ -157,8 +152,8 @@ namespace ADTree
                     Tag = RuntimeHelpers.GetObjectValue(enumerator.Value)
                 };
                 if (!enumerator.Key.ToString().Substring(0, 2).Equals("CN") ||
-                    (enumerator.Key.ToString().Equals("CN=Computers")) ||
-                    (enumerator.Key.ToString().Equals("CN=Users")))
+                    enumerator.Key.ToString().Equals("CN=Computers") ||
+                    enumerator.Key.ToString().Equals("CN=Users"))
                     flag1 = true;
 
                 if (flag1)
